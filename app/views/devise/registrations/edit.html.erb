@@ -1,0 +1,46 @@
+<ul class="cp_breadcrumb">
+	<li><a href="/">ホーム</a></li>
+	<li><a href="/users/registrations/edit_confirmation">会員情報詳細</a></li>
+	<li><a href="">アカウント編集</a></li>
+</ul>
+<div class="container">
+  <div id="wrap" class="single">
+    <h1 class="post-heading">会員登録内容変更</h1>
+
+    <div class="inputInformation">
+      <p>下記のご登録内容を変更してください。</p>
+    </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+	    <%= render "devise/shared/error_messages", resource: resource %>
+
+	    <div class="field form_group">
+	      <%= f.label :username, '名前*' %>
+	      <%= f.text_field :username, autofocus: true, autocomplete:"username", class: 'form-control' %>
+	    </div>
+	    <div class="field form_group">
+	      <%= f.label :email, 'メールアドレス*' %>
+	      <%= f.email_field :email, autofocus: true, autocomplete:"email", class: 'form-control' %>
+	    </div>
+	    <div class="field form_group*">
+	      <%= f.label :chess, '棋力' %>
+	      <%= f.text_field :chess, autocomplete: "chess", class: 'form-control tagsinput'%>
+	    </div>
+	    <div class="field form_group">
+	      <%= f.label :app, 'よく使用するアプリ*' %>
+	      <%= f.text_field :app, autocomplete: "app", class: 'form-control tagsinput'%>
+	    </div>
+	    <div class="field form_group">
+	      <%= f.label :time, 'よく行う持ち時間*' %>
+	      <%= f.text_field :time, autocomplete: "time", class: 'form-control tagsinput'%>
+	    </div>
+	    <div class="field form_group">
+	      <%= f.label :content, '自己紹介*' %>
+	      <%= f.text_area :content, autocomplete: "content", class: 'form-control'%>
+	    </div>
+
+	    <div class="actions buttonContainer">
+	      <%= f.submit "変更", class: "btn btn-primary buttonConfirm" %>
+	    </div>
+  	<% end %>
+  </div>
+</div>

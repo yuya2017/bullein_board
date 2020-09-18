@@ -1,0 +1,47 @@
+<div id="header">
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-around">
+    <a class="navbar-brand top-icon" href="/">
+      <h1>ノシ将棋</h1>
+    </a>
+
+    <%= search_form_for @search, url: posts_all_content_path, class:"ml-4 w-75 d-inline center-block" do |f| %>
+    <div class="input-group header_top">
+      <%= f.text_field :app_cont, placeholder: '何でも検索...', class: 'form-control', id: 'tags_top'%>
+      <%= f.submit ("🔍"), class: 'btn btn-secondary' %>
+    </div>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <% unless current_user.email == 'guest@example.com' %>
+            <li class="nav-item active">
+              <%= link_to 'アカウント編集', users_registrations_edit_confirmation_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+          <li class="nav-item active">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="reserv_postout">
+  <a href="/posts/new" style="text-decoration: none;">投稿↑</a>
+</div>
+<div class="reserv_mypageout">
+  <a href="/posts/mypage" style="text-decoration: none;">マイページ↑</a>
+</div>

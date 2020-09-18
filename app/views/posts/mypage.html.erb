@@ -1,0 +1,63 @@
+<ul class="cp_breadcrumb">
+	<li><a href="/">ホーム</a></li>
+	<li><a href="">マイページ</a></li>
+</ul>
+<div id="mypagewrap">
+  <h1 class="mypage-heading">マイページ</h1>
+  <ul class="nav nav-tabs" id="myTab" role="tablist", style="padding-top:50px">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="Home" aria-selected="true">投稿一覧</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="Profile" aria-selected="false">メッセージ</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="container">
+        <div class="row main_wrap">
+          <% @post.each do |post| %>
+						<div class="col-lg-6 col-12">
+							<a href="/posts/<%="#{post.id}" %>" style="text-decoration:none;">
+								<div class="main_content">
+									<div class="main_card">
+										<h2><%= post.room.name %></h2>
+										<p>対戦したいアプリ：<%=  content_tag :span, post.app, class: "index_tag"%></p>
+										<p>棋力：<%= post.chess %></p>
+										<p>持ち時間：<%= post.time %></p>
+										<p><%= post.content %></p>
+										<span class="card_tag">#<%= post.all_tag %></span>
+										<p class="card_time"><%= l post.created_at, format: '%m月%-d日(%a) %H:%M' %></p>
+									</div>
+								</div>
+							</a>
+						</div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div class="container">
+        <div class="mypage_message_wrap">
+          <% @messages.each do |message| %>
+            <% unless @ary.include?(message.room.id) %>
+              <% num_content = message.content.last(1) %>
+              <a href="/rooms/<%="#{message.room.id}" %>" style="text-decoration:none;">
+	              <div class="mypage_message_body">
+	                <div class="mypage_message_title">
+	                  <p class="mypage_message_text">部屋名：<%= message.room.name %></p>
+											<span style="float:right; padding-right:50px;"><%= l message.created_at, format: '%m月%-d日(%a) %H:%M' %></span>
+	                </div>
+	                <div class="mypage_message_content">
+	                  <p class="mypage_message_text"><%= message.content %></p>
+	                </div>
+	              </div>
+            	</a>
+            	<% @ary.unshift(message.room.id) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

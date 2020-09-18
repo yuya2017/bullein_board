@@ -1,0 +1,42 @@
+<ul class="cp_breadcrumb">
+	<li><a href="/">ホーム</a></li>
+	<li><a href="">ユーザー情報詳細</a></li>
+</ul>
+<div class="container">
+  <div id="wrap" class="single">
+    <h1 class="post-heading">ユーザー情報詳細</h1>
+    <div class="inputInformation">
+      <p>下記の内容をご入力の上、お進みください。</p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>氏名</h5>
+      <p class="confirmation_text"><%= @user.username %></p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>メールアドレス</h5>
+      <p class="confirmation_text"><%= @user.email %></p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>棋力</h5>
+      <p class="confirmation_text"><%= @user.chess %></p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>よく使用するアプリ</h5>
+      <p class="confirmation_text"><%= @user.app %></p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>よく行う持ち時間</h5>
+      <p class="confirmation_text"><%= @user.time %></p>
+    </div>
+    <div class="confirmation_form">
+      <h5 class=confirmation_wrap>自己紹介</h5>
+      <p class="confirmation_text"><%= @user.content %></p>
+    </div>
+    <div class="actions buttonContainer">
+      <%= link_to '編集', edit_user_registration_path, class: 'btn btn-primary buttonConfirm' %>
+    </div>
+    <div class="actions buttonContainer">
+      <%= link_to 'マイページ', posts_mypage_path, class: 'btn btn-primary buttonConfirm' %>
+    </div>
+  </div>
+</div>

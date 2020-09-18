@@ -1,0 +1,22 @@
+<div class="message" id="message-<%= message.id %>">
+  <% unless current_user.id == message.user.id %>
+    <div class="balloon">
+      <figure class="balloon-name-left">
+        <figcaption class="balloon-name-description">
+          <p><%= message.user.username %></p>
+        </figcaption>
+      </figure>
+      <div class="balloon-text-right">
+        <%= simple_format(h message.content) %>
+        <p><%= l message.created_at, format: '%Y年%-m月%-d日(%a) %H:%M' %></p>
+      </div>
+    </div>
+  <% else %>
+    <div class="balloon">
+      <div class="balloon-text-left">
+        <%= simple_format(h message.content) %>
+        <p><%= l message.created_at, format: '%Y年%-m月%-d日(%a) %H:%M' %></p>
+     </div>
+    </div>
+  <% end %>
+</div>

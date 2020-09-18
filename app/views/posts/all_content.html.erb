@@ -1,0 +1,33 @@
+<ul class="cp_breadcrumb">
+	<li><a href="/">ホーム</a></li>
+	<li><a href="">投稿一覧</a></li>
+</ul>
+<div class="all_contnnt_body">
+	<div class="main_title">
+		<h1>一覧</h1>
+	</div>
+	<div class="container">
+		<div class="row main_wrap">
+      <% @search_posts.each do |post| %>
+			<div class="col-lg-6 col-12">
+				<a href="/posts/<%="#{post.id}" %>" style="text-decoration:none;">
+					<div class="main_content">
+						<div class="main_card paper paper-curl-right">
+							<h2><%= post.room.name %></h2>
+							<p>対戦したいアプリ：<%=  content_tag :span, post.app, class: "index_tag"%></p>
+							<p>棋力：<%= post.chess %></p>
+							<p>持ち時間：<%= post.time %></p>
+							<p><%= post.content %></p>
+			 				<span class="card_tag">#<%= post.all_tag %></span>
+							<p class="card_time"><%= l post.created_at, format: '%-m月%-d日(%a) %H:%M' %></p>
+						</div>
+					</div>
+				</a>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="paginete_wrap">
+		<%= paginate @posts %>
+	</div>
+</div>

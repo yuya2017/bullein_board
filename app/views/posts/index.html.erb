@@ -1,0 +1,96 @@
+<header>
+  <% if notice %>
+     <p class="alert alert-notice"><%= notice %></p>
+   <% end %>
+   <% if alert %>
+     <p class="alert alert-error"><%= alert %></p>
+   <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light justify-content-around">
+    <a class="navbar-brand top-icon" href="/">
+      <h1 style="color:#FFF;">ノシ将棋</h1>
+    </a>
+    <%= search_form_for @search, url: posts_all_content_path, class:"ml-4 w-75 d-inline center-block" do |f| %>
+      <div class="input-group header_top">
+        <%= f.text_field :app_cont, placeholder: '何でも検索...', class: 'form-control', id: 'tags_top'%>
+        <%= f.submit ("🔍"), class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <% unless current_user.email == 'guest@example.com' %>
+            <li class="nav-item active">
+              <%= link_to 'アカウント編集', users_registrations_edit_confirmation_path, class: 'nav-link  index-nav' %>
+            </li>
+          <% end %>
+          <li class="nav-item active">
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link  index-nav ' %>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "新規登録", new_user_registration_path, class: 'nav-link  index-nav ' %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログイン", new_user_session_path, class: 'nav-link  index-nav ' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+<section id="mainvisual"></section>
+</header>
+
+<div class="reserv_post">
+  <a href="/posts/new" style="text-decoration: none;">投稿↑</a>
+</div>
+<div class="reserv_mypage">
+  <a href="/posts/mypage" style="text-decoration: none;">マイページ↑</a>
+</div>
+
+<main>
+  <div class="rec_body">
+    <h3 class="rec-title1">遊びましょう。同じアプリで。同じレベルで。</h3>
+    <h5 class="rec-title2">このサイトは将棋専門の投稿掲示板です。</h5>
+    <h5 class="rec-title3">チャットルームも用意してありますので、</h5>
+    <h5 class="rec-title4">もし時間がある方は感想戦まで行ってみてはいかががですか。</h5>
+  </div>
+  <div class="main_body">
+    <div class="main_title">
+      <h1>一覧</h1>
+    </div>
+    <div class="container">
+      <div class="row main_wrap">
+        <% @posts.each do |post| %>
+          <div class="col-lg-6 col-12">
+            <a href="/posts/<%="#{post.id}" %>" style="text-decoration:none;">
+              <div class="main_content">
+                <div class="main_card">
+                  <h2><%= post.room.name %></h2>
+                  <p>対戦したいアプリ：<%=  content_tag :span, post.app, class: "index_tag"%></p>
+                  <p>棋力：<%= post.chess %></p>
+                  <p>持ち時間：<%= post.time %></p>
+                  <p><%= post.content %></p>
+                  <span class="card_tag">#<%= post.all_tag %></span>
+                  <p class="card_time"><%= l post.created_at, format: '%-m月%-d日(%a) %H:%M' %></p>
+                </div>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
+      <div class="view-more">
+        <button class="learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <a href="/posts/all_content">
+          <span class="button-text">もっと見る</span>
+          </a>
+        </button>
+      </div>
+    </div>
+  </div>
+</main>

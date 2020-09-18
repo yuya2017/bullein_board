@@ -1,0 +1,38 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">HOME</a></li>
+    <li class="breadcrumb-item active" aria-current="page">パスワード再設定</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <div id="wrap" class="single">
+    <h1 class="post-heading">パスワード再設定</h1>
+    <div class="post-explanation">
+      <div class="explanation-body">
+        <ul class="explanation-show">
+          <li>１．下記フォームにてご登録メールアドレスをご入力ください。</li>
+          <li>２．パスワード変更用ページのＵＲＬを記載したメールを送信します。</li>
+          <li>３．記載されているＵＲＬにアクセスし、パスワードの変更を行ってください。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login-group">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="login-form">
+          <div class="field form-group login-content">
+            <%= f.label :email, 'メールアドレス*' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="actions buttonContainer">
+          <%= f.submit "送信", class: 'btn btn-primary buttonConfirm' %>
+        </div>
+        <% end %>
+    </div>
+
+  </div>
+</div>

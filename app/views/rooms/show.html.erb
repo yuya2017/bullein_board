@@ -1,0 +1,32 @@
+<div id="message_header">
+  <nav class="navbar navbar-expand-sm navbar-light justify-content-around">
+    <a class="navbar-brand top-icon" href="/">
+      <h1>ノシ将棋</h1>
+    </a>
+
+    <%= search_form_for @search, url: posts_all_content_path, class:"ml-4 w-75 d-inline center-block" do |f| %>
+      <div class="input-group header_top">
+        <%= f.text_field :app_cont, placeholder: '何でも検索...', class: 'form-control', id: 'tags_top'%>
+        <%= f.submit ("🔍"), class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+
+    <% if notice %>
+      <p class="alert alert-notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-error"><%= alert %></p>
+    <% end %>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <h3>部屋名：<%= @room.name %></h3>
+    </div>
+
+  </nav>
+</div>
+<div id="message-container">
+  <div id='messages' data-room_id="<%= @room.id %>" style="margin-top:100px;">
+    <%= render @messages %>
+  </div>
+</div>
+<%= render 'footer' %>

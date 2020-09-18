@@ -1,0 +1,43 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">HOME</a></li>
+    <li class="breadcrumb-item active" aria-current="page">新しいパスワードの登録</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <div id="wrap" class="single">
+    <h1 class="post-heading">新しいパスワードの登録</h1>
+    <div class="post-explanation">
+      <div class="explanation-body">
+        <ul class="explanation-show">
+          <li>１．下記フォームにてご登録メールアドレスをご入力ください。</li>
+          <li>２．パスワード変更用ページのＵＲＬを記載したメールを送信します。</li>
+          <li>３．記載されているＵＲＬにアクセスし、パスワードの変更を行ってください。</li>
+        </ul>
+      </div>
+    </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token %>
+
+    <div class="login-form">
+      <div class="field form-group login-content">
+        <%= f.label :password, "変更後パスワード" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)*</em>
+        <% end %>
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class:"form-control" %>
+      </div>
+      <div class="field form-group login-content">
+        <%= f.label :password_confirmation, "パスワード確認用" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="actions buttonContainer">
+      <%= f.submit "変更", class: "btn btn-primary buttonConfirm" %>
+    </div>
+  </div>
+</div>
+<% end %>

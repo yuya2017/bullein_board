@@ -1,0 +1,44 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">HOME</a></li>
+    <li class="breadcrumb-item active" aria-current="page">パスワード再設定</li>
+  </ol>
+</nav>
+<div class="dea">
+</div>
+
+<div class="container" style="padding-top:100px;">
+  <div id="wrap" class="single">
+    <div class="confirmation_message">
+      <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+      <div class="confirmation_text">
+        <p>パスワード変更に対する有効期限が過ぎています。</p>
+        <p>再度、パスワード変更の問合せを行ってください。</p>
+      </div>
+    </div>
+    <h1 class="post-heading" style="padding-top:100px;">パスワード再設定</h1>
+    <div class="post-explanation">
+      <div class="explanation-body">
+        <ul class="explanation-show">
+          <li>１．下記フォームにてご登録メールアドレスをご入力ください。</li>
+          <li>２．パスワード変更用ページのＵＲＬを記載したメールを送信します。</li>
+          <li>３．記載されているＵＲＬにアクセスし、パスワードの変更を行ってください。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login-group">
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <div class="login-form">
+          <div class="field form-group login-content">
+            <%= f.label :email, 'メールアドレス*' %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+          </div>
+        </div>
+        <div class="actions buttonContainer">
+          <%= f.submit "送信", class: 'btn btn-block buttonConfirm' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
