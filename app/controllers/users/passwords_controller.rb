@@ -2,7 +2,7 @@
 
 class Users::PasswordsController < Devise::PasswordsController
   before_action :check_guest, only: :create
-  
+
   # GET /resource/password/new
   # def new
   #   super
@@ -25,6 +25,8 @@ class Users::PasswordsController < Devise::PasswordsController
 
   # protected
 
+
+
   # def after_resetting_password_path_for(resource)
   #   super(resource)
   # end
@@ -33,4 +35,5 @@ class Users::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
 end

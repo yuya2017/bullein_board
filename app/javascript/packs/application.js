@@ -10,7 +10,6 @@ require("channels")
 require('jquery')
 require('javascript/jquery.tagsinput.min')
 require('javascript/posts')
-require('javascript/format')
 
 //= require_tree
 

@@ -41,6 +41,9 @@
 	    <div class="actions buttonContainer">
 	      <%= f.submit "変更", class: "btn btn-primary buttonConfirm" %>
 	    </div>
+			<%= button_to "アカウント削除", registration_path(resource_name), data: { confirm: "本当に削除していいですか？" }, method: :delete, class: "btn btn-danger buttonDelete" %>
+
+
   	<% end %>
   </div>
 </div>
