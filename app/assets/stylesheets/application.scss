@@ -1,3 +1,19 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -323,6 +339,20 @@ header {
   width: 260px;
   height: 60px;
   background-color: #FFCC99;
+  text-align: center;
+  border: 1px #FFCC99 solid;
+  line-height: 50px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  border-radius: 30px;
+}
+
+.buttonDelete {
+  display: block;
+  margin: 30px auto;
+  width: 260px;
+  height: 60px;
+  background-color: #d9534f;
   text-align: center;
   border: 1px #FFCC99 solid;
   line-height: 50px;
@@ -712,14 +742,12 @@ right: -20px;
 }
 
 .footer_right > .svg-inline--fa {
-  float: right;
   font-size: 50px;
   padding-right: 20px;
   padding-bottom: 20px;
 }
 
 .footer_right > a > .svg-inline--fa {
-  float: right;
   font-size: 50px;
   padding-right: 20px;
   padding-bottom: 20px;
@@ -728,7 +756,7 @@ right: -20px;
 
 .footer_log {
   clear: both;
-  text-align: right;
+  text-align: left;
 }
 
 @mixin transition($property: all, $duration: 0.45s, $ease: cubic-bezier(0.65,0,.076,1)) {
@@ -882,18 +910,3 @@ right: -20px;
 @media screen and(max-width: 576px) {
   .footervisual { height: 600px; }
 }
-/*
-* This is a manifest file that'll be compiled into application.css, which will include all the files
-* listed below.
-*
-* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
-* vendor/assets/stylesheets directory can be referenced here using a relative path.
-*
-* You're free to add application-wide styles to this file and they'll appear at the bottom of the
-* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
-* files in this directory. Styles in this file should be added after the last require_* statement.
-* It is generally better to create a new file per style scope.
-*
-*= require_tree .
-*= require_self
-*/

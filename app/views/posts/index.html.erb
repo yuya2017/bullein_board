@@ -9,9 +9,9 @@
     <a class="navbar-brand top-icon" href="/">
       <h1 style="color:#FFF;">ノシ将棋</h1>
     </a>
-    <%= search_form_for @search, url: posts_all_content_path, class:"ml-4 w-75 d-inline center-block" do |f| %>
+    <%= search_form_for @q, url: posts_search_posts_path, class:"ml-4 w-75 d-inline center-block" do |f| %>
       <div class="input-group header_top">
-        <%= f.text_field :app_cont, placeholder: '何でも検索...', class: 'form-control', id: 'tags_top'%>
+        <%= f.search_field :app_or_chess_or_time_or_all_tag_cont, placeholder: '何でも検索...', class: 'form-control', id: 'tags_top'%>
         <%= f.submit ("🔍"), class: 'btn btn-secondary' %>
       </div>
     <% end %>

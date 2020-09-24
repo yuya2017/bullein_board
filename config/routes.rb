@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'posts/edit_confirmation' => 'posts#edit_confirmation'
   get 'posts/edit_change' => 'posts#edit_change'
   get 'posts/all_content' => 'posts#all_content'
+  get 'posts/search_posts' => 'posts#search_posts'
   get 'posts/mypage' => 'posts#mypage'
   get 'posts/:id' =>'posts#show'
   post 'posts/create' => 'posts#create'
