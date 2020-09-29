@@ -9,10 +9,10 @@ class User < ApplicationRecord
   has_many :user_rooms
   has_many :rooms, through: :user_rooms
 
-  validate :username_presence
-  validate :chess_presence
-  validate :app_presence
-  validate :time_presence
+  validate :username_validate
+  validate :chess_validate
+  validate :app_validate
+  validate :time_validate
 
   def remember_me
     true
@@ -32,43 +32,35 @@ class User < ApplicationRecord
 
   private
 
-  def username_presence
-    unless encrypted_password_changed?
-      if username.blank?
-        errors.add(:base, " ユーザー名を入力してください.")
-      elsif username.length > 10
-        errors.add(:base, "ユーザー名は10文字以内にしてください。")
-      end
+  def username_validate
+    if username.blank?
+      errors.add(:username, "を入力してください")
+    elsif username.length > 10
+      errors.add(:username, "は10文字以内にしてください")
     end
   end
 
-  def chess_presence
-    unless encrypted_password_changed?
-      if chess.blank?
-        errors.add(:base, "棋力を入力してください.")
-      elsif chess.length > 10
-        errors.add(:base, "棋力は10文字以内にしてください。")
-      end
+  def chess_validate
+    if chess.blank?
+      errors.add(:chess, "を入力してください")
+    elsif chess.length > 10
+      errors.add(:chess, "は10文字以内にしてください")
     end
   end
 
-  def app_presence
-    unless encrypted_password_changed?
-      if app.blank?
-        errors.add(:base, "アプリ名を入力してください.")
-      elsif app.length > 30
-        errors.add(:base, "アプリ名は30文字以内にしてください。")
-      end
+  def app_validate
+    if app.blank?
+      errors.add(:app, "を入力してください")
+    elsif app.length > 30
+      errors.add(:app, "は30文字以内にしてください")
     end
   end
 
-  def time_presence
-    unless encrypted_password_changed?
-      if time.blank?
-        errors.add(:base, "持ち時間を入力してください.")
-      elsif time.length > 10
-        errors.add(:base, "持ち時間は12文字以内にしてください。")
-      end
+  def time_validate
+    if time.blank?
+      errors.add(:time, "を入力してください")
+    elsif time.length > 10
+      errors.add(:time, "は10文字以内にしてください")
     end
   end
 

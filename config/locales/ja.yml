@@ -6,10 +6,20 @@ ja:
       room: 部屋
     attributes:
       user:
-        name: 名前
+        username: ユーザー名
+        chess: 棋力
+        app: アプリ名
+        time: 持ち時間
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
-    attributes:
+
+      post:
+        chess: 棋力
+        app: アプリ名
+        time: 持ち時間
+        all_tag: タグ
+        content: 募集内容
+
       room:
-        name: ""
+        name: 部屋名
