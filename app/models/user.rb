@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validate :chess_validate
   validate :app_validate
   validate :time_validate
+  validate :content_validate
 
   def remember_me
     true
@@ -25,6 +26,7 @@ class User < ApplicationRecord
     user.app = "何でも可"
     user.time = "何でも可"
     user.chess = "30級"
+    user.content = "ゲストユーザーです。"
     user.confirmed_at = Time.now
     end
   end
@@ -61,6 +63,12 @@ class User < ApplicationRecord
       errors.add(:time, "を入力してください")
     elsif time.length > 10
       errors.add(:time, "は10文字以内にしてください")
+    end
+  end
+
+  def content_validate
+    if content.length > 100
+      errors.add(:content, "は100文字以内にしてください")
     end
   end
 

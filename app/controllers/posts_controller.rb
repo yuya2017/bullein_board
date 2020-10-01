@@ -33,7 +33,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      flash[:notice] = "名前が投稿しました。"
+      flash[:notice] = "#{@post.user.username}が#{@post.room.name}を作成しました。"
       redirect_to("/")
     else
       render("posts/new")
@@ -49,17 +49,17 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
-      flash[:notice] = "更新しました。"
-      redirect_to("/")
-    else
-      render("posts/edit")
-    end
+      if @post.update(post_params)
+        flash[:notice] = "更新しました。"
+        redirect_to("/")
+      else
+        render("posts/edit")
+      end
   end
 
   def destroy
     if @post.destroy
-      flash[:notice] = "「#{@post.room.name}」の投稿が削除されました。"
+      flash[:notice] = "「#{@post.room.name}」が削除されました。"
       redirect_to("/")
     else
       render("posts/edit")

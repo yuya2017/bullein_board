@@ -93,6 +93,20 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context "contentの文字数が100文字より多い場合" do
+    it "無効な状態であること" do
+      user = build(:user, content:"12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901")
+      user.valid?
+      expect(user.errors[:content]).to include("は100文字以内にしてください")
+    end
+  end
+  context "contentの文字数が100文字以内の場合" do
+    it "有効な状態であること" do
+      user = build(:user, content: "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890")
+      expect(user).to be_valid
+    end
+  end
+
   it "passwordがなれけば無効な状態であること" do
     user = build(:user, password: nil)
     user.valid?

@@ -11,13 +11,14 @@ ja:
         app: アプリ名
         time: 持ち時間
         email: メールアドレス
+        content: 自己紹介文
         password: パスワード
         password_confirmation: 確認用パスワード
 
       post:
         chess: 棋力
         app: アプリ名
-        time: 持ち時間
+        time: 対戦時間
         all_tag: タグ
         content: 募集内容
 

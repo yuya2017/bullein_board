@@ -10,9 +10,9 @@ class Room < ApplicationRecord
 
   def name_validate
     if name.blank?
-      errors.add(:name, "を入力してください.")
+      errors.add(:name, "を入力してください")
     elsif name.length > 12
-      errors.add(:name, "12文字以内にしてください。")
+      errors.add(:name, "は12文字以内にしてください")
     end
   end
 

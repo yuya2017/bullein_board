@@ -31,7 +31,7 @@ class Post < ApplicationRecord
     if time.blank?
       errors.add(:time, "を入力してください.")
     elsif time.length > 10
-      errors.add(:time, "は12文字以内にしてください")
+      errors.add(:time, "は10文字以内にしてください")
     end
   end
   def all_tag_validate
