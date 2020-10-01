@@ -7,8 +7,8 @@ class MessagesController < ApplicationController
       rendered_template = render @message
       ActionCable.server.broadcast "room_channel_#{@message.room_id}", message: rendered_template
     else
-      flash[:alert] = 'メッセージが空白もしくは100文字を超えました。'
-      redirect_to("/")
+      flash[:alert] = "メッセージが空白もしくは100文字を超えました。"
+      redirect_to("/rooms/#{@message.room_id}")
     end
   end
 

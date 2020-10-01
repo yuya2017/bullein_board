@@ -65,7 +65,7 @@
       <div class="row main_wrap">
         <% @posts.each do |post| %>
           <div class="col-lg-6 col-12">
-            <a href="/posts/<%="#{post.id}" %>" style="text-decoration:none;">
+            <a href="/posts/<%="#{post.id}" %>" style="text-decoration:none;" id="show_link">
               <div class="main_content">
                 <div class="main_card">
                   <h2><%= post.room.name %></h2>

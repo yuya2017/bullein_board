@@ -15,7 +15,6 @@ Rails.application.routes.draw do
   get 'rooms/:id' => 'rooms#show', as:'rooms'
   resources :messages, only: :create
   get 'posts/new' => 'posts#new'
-  get 'posts/top' => 'posts/top'
   get 'posts/rec' => 'posts#rec'
   get 'posts/edit_confirmation' => 'posts#edit_confirmation'
   get 'posts/edit_change' => 'posts#edit_change'

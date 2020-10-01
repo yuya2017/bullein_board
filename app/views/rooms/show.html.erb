@@ -12,14 +12,14 @@
     <% end %>
 
     <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
+      <p class="alert alert-notice", style="margin-right:30px;"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
+      <p class="alert alert-error", style="margin-right:30px;"><%= alert %></p>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarNav">
-      <h3>部屋名：<%= @room.name %></h3>
+      <h4>部屋名：</br><%= @room.name %></h4>
     </div>
 
   </nav>
