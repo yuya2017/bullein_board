@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username:
+  password:
   database: bullein_board_production
-  username: bullein_board
-  password: <%= ENV['BULLEIN_BOARD_DATABASE_PASSWORD'] %>
