@@ -68,9 +68,9 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    :address => "sv10775.xserver.jp",
+    :address => ENV['MAIL_ADDRESS'],
     :port => 587,
-    :user_name => "yuya92220087@gmail.com",
+    :user_name => ENV['MAIL_NAME'],
     :password => ENV['MAIL_PASSWORD'],
     :authentication => :plain,
     :enable_starttls_auto => true
