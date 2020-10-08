@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+  :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :messages, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -21,13 +21,13 @@ class User < ApplicationRecord
 
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
-    user.password = SecureRandom.urlsafe_base64
-    user.username = "ゲスト"
-    user.app = "何でも可"
-    user.time = "何でも可"
-    user.chess = "30級"
-    user.content = "ゲストユーザーです。"
-    user.confirmed_at = Time.now
+      user.password = SecureRandom.urlsafe_base64
+      user.username = "ゲスト"
+      user.app = "何でも可"
+      user.time = "何でも可"
+      user.chess = "30級"
+      user.content = "ゲストユーザーです。"
+      user.confirmed_at = Time.now
     end
   end
 
