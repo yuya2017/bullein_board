@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :set_target_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy, :mypage]
   before_action :check_guest, only: [:new, :create, :update, :destroy, :mypage]
+  before_action :account_confirmation, only: [:edit, :update, :destroy]
   before_action :set_search
 
   def index
@@ -75,6 +76,13 @@ class PostsController < ApplicationController
 
   def set_target_post
     @post = Post.find(params[:id])
+  end
+
+  def account_confirmation
+    unless current_user.id == @post.user_id
+    flash[:notice] = "このアカウントは操作できません。"
+      redirect_to("/")
+    end
   end
 
 end
